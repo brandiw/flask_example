@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Python Page</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% if name %}
+    <h1>Hello, {{ name }}</h1>
+  {% else %}
+    <h1>Hello, World!</h1>
+  {% endif %}
+  <p>I am a template page!</p>
+  <a href="/say_hi/123">Say hello to me</a>
+  <hr>
+  <h2>Make a new hero</h2>
+  <form method='POST' action='/heroes'>
+    <div>
+      <label>Person's Name:</label>
+      <input type="text" name="person" placeholder="Name of hero">
+    </div>
+    <div>
+      <label>Age:</label>
+      <input type="number" name="age" placeholder="Their age">
+    </div>
+    <input type="submit" value="Power Up!">
+  </form>
+
+  <br><br><hr>
+  <h2>Current Heroes</h2>
+  <ul>
+    {% for hero in heroes %}
+      <li><p>{{ hero['person'] }}</p></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
